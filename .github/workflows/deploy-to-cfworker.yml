@@ -47,13 +47,14 @@ jobs:
           echo "-------------------"
           echo "worker_name=$WORKER_NAME" >> $GITHUB_OUTPUT
 
-      - name: 🚀 执行部署 (直接调用最新版 Wrangler)
+      - name: 🚀 执行部署 (最新版 Wrangler)
         run: |
-          npx --yes wrangler deploy \
-            --account-id "dabb9c3912e5ca5a548de5f04abba7" \
-            --var PASSWORD:"${PASSWORD}" \
-            --var TGID:"${TGID}" \
-            --var TGTOKEN:"${TGTOKEN}"
+          VARS_ARGS=()
+          [ -n "${PASSWORD}" ] && VARS_ARGS+=(--var "PASSWORD:${PASSWORD}")
+          [ -n "${TGID}" ] && VARS_ARGS+=(--var "TGID:${TGID}")
+          [ -n "${TGTOKEN}" ] && VARS_ARGS+=(--var "TGTOKEN:${TGTOKEN}")
+
+          npx --yes wrangler deploy "${VARS_ARGS[@]}"
 
       - name: ✨ 输出 Worker 管理后台
         env:
