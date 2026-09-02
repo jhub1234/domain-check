@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: '4296102bae32bbcff02a968257c8643d'
+      CLOUDFLARE_ACCOUNT_ID: 'dabb9c3912e5ca5a5a548de5f04abba7'
       PASSWORD: ${{ secrets.PASSWORD }}
       TGID: ${{ secrets.TGID }}
       TGTOKEN: ${{ secrets.TGTOKEN }}
